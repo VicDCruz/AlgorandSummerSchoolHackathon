@@ -1,11 +1,12 @@
 #pragma version 8
-txn ApplicationID
+// ID DE LA TRANSACCION SIEMPRE ES 0
+txn ApplicationID // FIELD DE LA TRANSACCION
 pushint 0
 ==
 
 pushbytes "ADMIN"
 txn Sender
-app_global_put
+app_global_put // Añade ADMIN Y ID de SENDER AL GLOBAL STATE
 
 bz main_0
 
@@ -80,10 +81,46 @@ int 1
 return
 
 
-
+// [# monsters, OBJ{Monster}, OBJ{Monster}, OBJ{Monster}]
 
 addMonster:
-//append monster to monsters box
+pushbytes "MONSTERS"
+
+dup
+pushbytes "MONSTERS"
+pushint 0
+pushint 8
+box_extract
+btoi
+pushint 24
+*
+pushint 8
++
+
+dup
+store 0
+
+txna ApplicationArgs 1
+itob
+txna ApplicationArgs 2
+itob
+txna ApplicationArgs 3
+itob
+concat
+concat
+
+box_replace
+
+int 0
+load 0
+int 1
++
+itob
+box_replace
+
+int 1
+return
+// append monster to monsters box
 
 // ApplicationArgs 1 is X
 // ApplicationArgs 2 is Y
