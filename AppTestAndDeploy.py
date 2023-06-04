@@ -626,6 +626,7 @@ class AllTests(MonsterArenaTestCommon):
 
     @classmethod
     def test_StealFromOfflinePlayer(self):
+        print("Hello, world")
         acc = sandbox.get_accounts()[1]
         victim = sandbox.get_accounts()[0]
         
@@ -648,4 +649,5 @@ if __name__ == "__main__":
     print("APP DEPLOYED AND FUNDED CORRECTLY WITH ID ", AppID)
     
     AllTests.AppID = AppID
-    unittest.main()
+    # unittest.main()
+    AllTests().test_AddMonsters()

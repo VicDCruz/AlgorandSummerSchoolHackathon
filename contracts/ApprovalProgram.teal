@@ -229,7 +229,7 @@ exitAndSavePlayer:
 
 
 playerMove:
-//allow the player to move through the map
+// allow the player to move through the map
 
 
 
